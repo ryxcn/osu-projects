@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    match item id to the id in the nav graph -->
+<item
+    android:id="@+id/search_tab"
+    android:title="@string/label_youtube_search"
+    android:icon="@drawable/ic_action_search" />
+
+<item
+    android:id="@+id/bookmarked_videos"
+    android:title="@string/action_bookmarks"
+    android:icon="@drawable/ic_action_bookmarks" />
+</menu>
