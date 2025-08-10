@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/search_tab">
+
+    <action
+        android:id="@+id/navigate_to_video_detail"
+        app:destination="@+id/video_detail" />
+
+    <fragment
+        android:id="@+id/bookmarked_videos"
+        android:label="@string/label_bookmarked_searches"
+        android:name="edu.oregonstate.edu.cs492.finalproject.ui.BookmarkFragment"/>
+
+    <fragment
+        android:id="@+id/search_tab"
+        android:label="@string/label_youtube_search"
+        android:name="edu.oregonstate.edu.cs492.finalproject.ui.YoutubeSearchFragment">
+
+        <action
+            android:id="@+id/navigate_to_bookmarked_videos"
+            app:destination="@+id/bookmarked_videos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/video_detail"
+        android:label="@string/label_youtube_video_detail"
+        android:name="edu.oregonstate.edu.cs492.finalproject.ui.VideoDetailFragment">
+        <argument
+            android:name="video"
+            app:argType="edu.oregonstate.edu.cs492.finalproject.data.YoutubeVideo"/>
+    </fragment>
+
+</navigation>
