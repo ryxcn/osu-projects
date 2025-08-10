@@ -1,0 +1,30 @@
+h1 {
+    color: rgb(24, 9, 231);
+    /*background-color: black;*/
+    /*border: 1px solid orange;*/
+}
+
+body {
+    background-image: url(image/i3.png);
+}
+
+table {
+    width: 100%;
+    border: 1px solid #000;
+  }
+form {
+    display: inline-block;
+}
+.navitem {
+    /*text-align: top;*/
+    border: 1px solid #040001;
+    display: block;
+    padding: 8px;
+    caption-side: bottom;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }

@@ -1,0 +1,123 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<body>
+    <h1> Cars </h1>
+    <nav>
+        <a class="navitem" href="/">Home</a>
+        <a class="navitem" href="/Car">Car</a>
+        <a class="navitem" href="/Customer">Customer</a>
+        <a class="navitem" href="/Employee">Employee</a>
+        <a class="navitem" href="/Invoice">Invoice</a>
+        <a class="navitem" href="/Waitlist">Waitlist</a>
+  </nav>
+    <div id="browse" style="display: block">
+
+        <p>&nbsp;</p>
+
+        </div> <!-- browse -->
+        <p>&nbsp;</p>
+        <div id="insert" style="display: block">
+            <!--<form id="addCar"> -->
+            <form id="addCar" method="POST" action="/addCar">
+                <legend><strong>Add Car</strong></legend>
+                  <fieldset class="fields">
+                    {{!--<label> id </label> <input type="number" name="carid">--}}
+                    <label> price </label> <input type="number" name="price">
+                    <label> brand </label> <input type="text" name="brand">
+                    <label> model </label> <input type="text" name="model">
+                    <label> year </label> <input type="number" name="year">
+                    <label> color </label> <input type="text" name="color">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="addCar" value="Add a Car">
+            </form> 
+        </div><!-- insert -->
+        <p>&nbsp;</p>
+
+
+        <!--update car -->
+        <div id="updateCarTable" style="display: block">
+
+            <form id="updateCar" action = "/update-car" method="POST">
+                <legend><strong>Update Car</strong></legend>
+                  <fieldset class="fields">
+                    <label for="select_id"> id </label> 
+                    <select name="select_id" id="mySelect">
+                      <option value="test">Select a car ID</option>
+                      {{#each data}}
+                      <option value="{{this.id}}">{{this.id}}</option>
+                      {{/each}}
+                    </select>
+                    <label> price </label> <input type="number" name="price">
+                    <label> brand </label> <input type="text" name="brand">
+                    <label> model </label> <input type="text" name="model">
+                    <label> year </label> <input type="number" name="year">
+                    <label> color </label> <input type="text" name="color">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="updateCar" value="Update Car">
+            </form> 
+        </div><!-- insert -->
+        <p>&nbsp;</p>
+        
+        <p><strong>Browse Cars</strong></p>
+        <p2>This is our inventory. We listed all cars that are avaliable in our storage.</p2>
+        <p>&nbsp;</p>
+
+
+        <div class="table_filter">
+            <input type="text" id="table_filter" onkeyup="myFunction()" placeholder="Search for brand..">
+
+        </div>
+
+        {{!-- Create a table --}}
+        <table border="1", cellpadding="5" id = "car-table">
+            <thead>
+                <tr>
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
+                </tr>
+            </thead>
+
+            {{!-- Body section --}}
+            <tbody>
+                {{#each data}}
+                <tr data-value={{this.id}}>
+                    {{#each this}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                <td><a onclick="Delete({{this.id}})" href="#">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("table_filter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("car-table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2]; 
+
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+</body>
+
+<script src="./js/delete_car.js"></script>

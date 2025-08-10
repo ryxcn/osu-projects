@@ -1,0 +1,13 @@
+# Vital Signs Route Updates Network System
+
+## Generate the certificate and private key
+
+openssl req -new -x509 -days 365 -nodes -out cert.pem -keyout key.pem -subj "/C=US/ST=Oregon/O=OSU/CN=vital-sign.org/emailAddress=email.oregonstate.edu"
+
+Note that you can change some parameters:
+* C, which is a 2 letter code for a country;
+* ST, which is a state or province name;
+* O, which is an organization name;
+* CN, which is the hostname:
+* Warning If you change the CN value, you have to change the hostname under client.py to reflect the new hostname.
+emailAddress (optional), which is an email address.

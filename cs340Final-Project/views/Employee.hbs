@@ -1,0 +1,89 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<body>
+    <h1> Employee </h1>
+    <nav>
+        <a class="navitem" href="/">Home</a>
+        <a class="navitem" href="/Car">Car</a>
+        <a class="navitem" href="/Customer">Customer</a>
+        <a class="navitem" href="/Employee">Employee</a>
+        <a class="navitem" href="/Invoice">Invoice</a>
+        <a class="navitem" href="/Waitlist">Waitlist</a>
+    </nav>
+
+    <div id="browse" style="display: block">
+        <!-- First Block -->
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        </div> <!-- browse -->
+        <div id="insert" style="display: block">
+            <form id="addEmployee" method="POST" action="/addEmployee">
+
+                <legend><strong>Add Employee</strong></legend>
+                  <fieldset class="fields">
+                    {{!-- <label> id </label> <input type="text" name="id"> --}}
+                    <label> first_name </label> <input type="text" name="first_name">
+                    <label> last_name </label> <input type="text" name="last_name">
+                    <label> sales </label> <input type="text" name="sales">
+                </fieldset>
+                  <input class="btn" type="submit" id="addEmployee" value="Add a Employee">
+            </form> <!--add new planet-->
+        </div><!-- insert -->
+
+        <p>&nbsp;</p>
+
+        <!--update car -->
+        <div id="updateEmployeeTable" style="display: block">
+
+            <form id="updateemployee" action = "/update-employee" method="POST">
+                <legend><strong>Update Employee</strong></legend>
+                  <fieldset class="fields">
+                    <label for="select_id"> id </label> 
+                    <select name="select_id" id="mySelect">
+                        <option value="test">Select a customer ID</option>
+                        {{#each data}}
+                        <option value="{{this.id}}">{{this.id}}</option>
+                        {{/each}}
+                    </select>
+                    <label> first_name </label> <input type="text" name="first_name">
+                    <label> last_name </label> <input type="text" name="last_name">
+                    <label> sales </label> <input type="text" name="sales">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="updateCar" value="Update Car">
+            </form> 
+        </div>
+        <p>&nbsp;</p>
+        
+
+        <p><strong>Browse Employee</strong></p>
+        {{!-- Create a table --}}
+        <table border="1", cellpadding="5" id = "employee-table">
+            <thead>
+                <tr>
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
+                </tr>
+            </thead>
+
+            {{!-- Body section --}}
+            <tbody>
+                {{#each data}}
+                <tr data-value={{this.id}}>
+                    {{#each this}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                <td><a onclick="Delete({{this.id}})" href="#">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+
+
+<script src="./js/delete_employee.js"></script>

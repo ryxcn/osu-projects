@@ -1,0 +1,83 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<body>
+    <h1> Waitlist </h1>
+    <nav>
+        <a class="navitem" href="/">Home</a>
+        <a class="navitem" href="/Car">Car</a>
+        <a class="navitem" href="/Customer">Customer</a>
+        <a class="navitem" href="/Employee">Employee</a>
+        <a class="navitem" href="/Invoice">Invoice</a>
+        <a class="navitem" href="/Waitlist">Waitlist</a>
+    </nav>
+    <div id="browse" style="display: block">
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        </div> <!-- browse -->
+        <div id="insertwaitlist" style="display: block">
+            <form id="addWaitlist" method="POST" action="/addWaitlist">
+                <legend><strong>Add Waitlist (c_id -> customer_id)<strong></legend>
+                  <fieldset class="fields">
+                    <label> c_id </label> <input type="text" name="cID">
+                    <label> car_id </label> <input type="text" name="carID">
+                    <label> date_add (will be applied by current time) </label>
+                </fieldset>
+                  <input class="btn" type="submit" id="addWaitlist" value="Add a Waitlist">
+            </form> <!--add new planet-->
+        </div><!-- insert -->
+        
+        <p>&nbsp;</p>
+
+        <!--update car -->
+        <div id="updateWaitlistTable" style="display: block">
+
+            <form id="updatewaitlist" action = "/update-waitlist" method="POST">
+                <legend><strong>Update Employee</strong></legend>
+                  <fieldset class="fields">
+                    <label for="select_id"> id </label> 
+                    <select name="select_id" id="mySelect">
+                        <option value="test">Select a waitlist ID</option>
+                        {{#each data}}
+                        <option value="{{this.id}}">{{this.id}}</option>
+                        {{/each}}
+                    </select>
+                    <label> c_id </label> <input type="text" name="c_id">
+                    <label> car_id </label> <input type="text" name="car_id">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="updateWaitlist" value="Update Waitlist">
+            </form> 
+        </div>
+        <p>&nbsp;</p>
+
+        <p><strong>Browse Invoice</strong></p>
+        {{!-- Create a table --}}
+        
+        <table border="1", cellpadding="5" id = "waitlist-table">
+            <thead>
+                <tr>
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
+                </tr>
+            </thead>
+
+            {{!-- Body section --}}
+            <tbody>
+                {{#each data}}
+                <tr data-value={{this.id}}>
+                    {{#each this}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                    <td><a onclick="Delete({{this.id}})" href="#">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+<script src="./js/delete_waitlist.js"></script>
+

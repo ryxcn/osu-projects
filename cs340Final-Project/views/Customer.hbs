@@ -1,0 +1,97 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<body>
+    <h1> Customer </h1>
+    <nav>
+        <a class="navitem" href="/">Home</a>
+        <a class="navitem" href="/Car">Car</a>
+        <a class="navitem" href="/Customer">Customer</a>
+        <a class="navitem" href="/Employee">Employee</a>
+        <a class="navitem" href="/Invoice">Invoice</a>
+        <a class="navitem" href="/Waitlist">Waitlist</a>
+    </nav>
+    <div id="browse" style="display: block">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        </div> 
+        <div id="insert" style="display: block">
+            <form id="addCustomer" method="POST" action="/addCustomer">
+                <legend><strong>Add Customer</strong></legend>
+                  <fieldset class="fields">
+                    {{!-- <label> id </label> <input type="number" name="id"> --}}
+                    <label> first_name </label> <input type="text" name="first_name">
+                    <label> last_name </label> <input type="text" name="last_name">
+                    <label> street </label> <input type="text" name="street">
+                    <label> zip </label> <input type="text" name="zip">
+                    <label> state </label> <input type="text" name="state">
+                    <label> city </label> <input type="text" name="city">
+                    <label> phone </label> <input type="text" name="phone">
+                    <label> email </label> <input type="text" name="email">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="addCustomer" value="Add a Customer">
+            </form> <!--add new planet-->
+        </div>
+        <p>&nbsp;</p>
+
+        <!--update car -->
+        <div id="updateCusTable" style="display: block">
+
+            <form id="updateCus" action = "/update-cus" method="POST">
+                <legend><strong>Update Customer</strong></legend>
+                  <fieldset class="fields">
+                    <label for="select_id"> id </label> 
+                    <select name="select_id" id="mySelect">
+                        <option value="test">Select a customer ID</option>
+                        {{#each data}}
+                        <option value="{{this.id}}">{{this.id}}</option>
+                        {{/each}}
+                    </select>
+                    <label> first_name </label> <input type="text" name="first_name">
+                    <label> last_name </label> <input type="text" name="last_name">
+                    <label> street </label> <input type="text" name="street">
+                    <label> zip </label> <input type="text" name="zip">
+                    <label> state </label> <input type="text" name="state">
+                    <label> city </label> <input type="text" name="city">
+                    <label> phone </label> <input type="text" name="phone">
+                    <label> email </label> <input type="text" name="email">
+
+                </fieldset>
+                  <input class="btn" type="submit" id="updateCar" value="Update Car">
+            </form> 
+        </div>
+    
+        <p>&nbsp;</p>
+
+
+    <p><strong>Browse Customer</strong></p>
+
+    {{!-- Create a table --}}
+    <table border="1", cellpadding="5" id = "customer-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.id}}>
+                {{#each this}}
+                <td>{{this}}</td>
+                {{/each}}
+            <td><a onclick="Delete({{this.id}})" href="#">Delete</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+
+<script src="./js/delete_customer.js"></script>
