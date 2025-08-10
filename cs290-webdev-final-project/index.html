@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+      <title>Web Browser Checkers</title>
+      <meta charset= "utf-8">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style.css" media="screen">
+
+      <script src="checker.js" charset="utf-8" defer></script>
+    </head>
+  <body>
+       <div class="table-container">
+        <div class='setup-container'>
+          <h1>Web Based Checkers</h1><br>
+
+          <label for= "P1name"> Player 1: </label> <input type= "text" id="P1name" value="Player 1"><br>
+          <label for= "P2name"> Player 2: </label> <input type= "text" id="P2name" value="Player 2"><br>
+
+
+            <br><br>
+            <form action= "game-theme" method= "post">Themes:<br>
+            <input type= "radio" name= "theme" value= "Default" checked> Classic  <br>
+            <input type= "radio" name= "theme" value= "custom1"> Retro<br>
+            <input type= "radio" name= "theme" value= "custom2"> Theme 2<br>
+            <input type= "radio" name= "theme" value= "custom3"> Theme 3<br>
+            <br>
+
+          </form>
+
+          <br><br><br>
+          <div class= "captured-container">
+              Captured Pieces:
+              <div id= "p1Captured"></div>
+              <div id= "p2Captured"></div>
+          </div>
+
+          <br><br><br>
+          <div id= "winnerBox"></div>
+
+          <br><br><br>
+          <span id="start-game">Begin Game</span>
+          <span id="reset-board">Reset Board</span>
+        </div>
+        <table class="board">
+          <tr>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+          </tr>
+          <tr>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+          </tr>
+          <tr>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+          </tr>
+          <tr>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+          </tr>
+          <tr>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+          </tr>
+          <tr>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+          </tr>
+          <tr>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+          </tr>
+          <tr>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+            <td id="whtsquare"></td>
+            <td id="blksquare"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class= "turnContainer">
+        <div class= "p1Turn">Player 1's Turn</div>
+        <div class= "turnSeparator"></div>
+        <div class= "p2Turn">Player 2's Turn</div>
+      </div>
+  </body>
